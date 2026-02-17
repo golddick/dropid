@@ -1,0 +1,30 @@
+# Source files
+src/
+tests/
+*.test.ts
+*.spec.ts
+
+# Config files
+.eslintrc.js
+.prettierrc.js
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+
+# Development
+.vscode/
+.idea/
+.DS_Store
+
+# Testing
+coverage/
+.nyc_output/
+
+# CI/CD
+.github/
+
+# Misc
+*.log
+.env
+.env.*
+*.tgz
