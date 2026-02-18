@@ -1,16 +1,18 @@
-# Drop-API-ID
+# DropID
 
-[![npm version](https://badge.fury.io/js/drop-api-id.svg)](https://www.npmjs.com/package/drop-api-id)
+[![npm version](https://badge.fury.io/js/dropid.svg)](https://www.npmjs.com/package/dropid)
+[![npm downloads](https://img.shields.io/npm/dm/dropid.svg)](https://www.npmjs.com/package/dropid)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-Human-readable, prefixed unique identifiers for your database models. Stop wrestling with long, boring UUIDs and start using IDs that make sense.
+[![GitHub stars](https://img.shields.io/github/stars/golddick/dropid.svg)](https://github.com/golddick/dropid/stargazers)
+https://github.com/golddick/dropid.git
+Human-readable, prefixed unique identifiers for your database models.
 
 ```typescript
 dropid('user')        // → user_a3f2b9c1d4e5
 dropid('post', 'app') // → app_post_x7k9m2n4p1q8
 ```
 
-## Why Drop-API-ID?
+## Why DropID?
 
 **Before (UUIDs):**
 ```
@@ -18,7 +20,7 @@ dropid('post', 'app') // → app_post_x7k9m2n4p1q8
 ```
 Good luck debugging that in your logs.
 
-**After (Drop-API-ID):**
+**After (DropID):**
 ```
 user_a3f2b9c1d4e5
 ```
@@ -37,17 +39,17 @@ Instantly know what you're looking at.
 ## Installation
 
 ```bash
-npm install drop-api-id
+npm install dropid
 # or
-yarn add drop-api-id
+yarn add dropid
 # or
-pnpm add drop-api-id
+pnpm add dropid
 ```
 
 ## Quick Start
 
 ```typescript
-import { dropid } from 'drop-api-id';
+import { dropid } from 'dropapi';
 
 // Basic usage
 const userId = dropid('user');
@@ -71,7 +73,7 @@ const newUser = {
 
 ```typescript
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
-import { dropid } from 'drop-api-id';
+import { dropid } from 'dropapi';
 
 export const users = pgTable('users', {
   id: text('id').primaryKey().$defaultFn(() => dropid('user')),
@@ -91,7 +93,7 @@ export const posts = pgTable('posts', {
 
 ```typescript
 // In your application code
-import { dropid } from 'drop-api-id';
+import { dropid } from 'dropapi';
 
 const user = await prisma.user.create({
   data: {
@@ -114,7 +116,7 @@ const post = await prisma.post.create({
 
 ```typescript
 import { Entity, PrimaryColumn, Column } from 'typeorm';
-import { dropid } from 'drop-api-id';
+import { dropid } from 'dropapi';
 
 @Entity()
 export class User {
@@ -167,7 +169,7 @@ interface DropIdOptions {
 
 **Examples:**
 ```typescript
-import { configure, dropid } from 'drop-api-id';
+import { configure, dropid } from 'dropaphi';
 
 // Use longer IDs
 configure({ length: 16 });
@@ -194,7 +196,7 @@ Creates a reusable ID generator with a fixed prefix.
 
 **Examples:**
 ```typescript
-import { createPrefixedId } from 'drop-api-id';
+import { createPrefixedId } from 'dropaphi';
 
 // Create organization-specific generators
 const acmeId = createPrefixedId('acme');
@@ -210,7 +212,7 @@ globexId('user'); // → globex_user_k2j8n9m3l1p5
 
 **Alphabet presets:**
 ```typescript
-import { alphabets } from 'drop-api-id';
+import { alphabets } from 'dropaphi';
 
 alphabets.alphanumeric // '0123456789abcdefghijklmnopqrstuvwxyz' (default)
 alphabets.base58       // Bitcoin-style (no 0/O, 1/l/I confusion)
@@ -221,7 +223,7 @@ alphabets.numeric      // '0123456789' (not recommended)
 
 **Length presets:**
 ```typescript
-import { lengths } from 'drop-api-id';
+import { lengths } from 'dropaphi';
 
 lengths.short      // 8 chars  - ~4 years to 1% collision
 lengths.medium     // 12 chars - ~200 years to 1% collision (default)
@@ -234,7 +236,7 @@ lengths.extraLong  // 21 chars - essentially collision-proof
 ### Multi-tenant SaaS
 
 ```typescript
-import { createPrefixedId } from 'drop-api-id';
+import { createPrefixedId } from 'dropaphi';
 
 function getTenantIdGenerator(tenantId: string) {
   return createPrefixedId(tenantId);
@@ -258,7 +260,7 @@ app.post('/api/:tenantId/users', async (req, res) => {
 ### Different Alphabets
 
 ```typescript
-import { configure, dropid, alphabets } from 'drop-api-id';
+import { configure, dropid, alphabets } from 'dropaphi';
 
 // Base58 (no confusing characters)
 configure({ alphabet: alphabets.base58 });
@@ -272,7 +274,7 @@ dropid('log'); // → log_a3f2b9c1d4e5
 ### Per-Call Options
 
 ```typescript
-import { dropid } from 'drop-api-id';
+import { dropid } from 'dropaphi';
 
 // Override global config for specific calls
 const shortId = dropid('temp', undefined, { length: 6 });
@@ -289,7 +291,7 @@ const customId = dropid('special', 'app', {
 
 ### Collision Resistance
 
-Drop-API-ID uses [nanoid](https://github.com/ai/nanoid) which is cryptographically secure:
+DropID uses [nanoid](https://github.com/ai/nanoid) which is cryptographically secure:
 
 - **Default (12 chars)**: ~200 years to 1% collision at 1,000 IDs/second
 - **16 chars**: ~10^12 years to 1% collision at 1,000 IDs/second  
@@ -319,10 +321,10 @@ Default alphabet (`0-9a-z`) and separator (`_`) are URL-safe and work in:
 
 ## TypeScript Support
 
-Drop-API-ID is written in TypeScript and provides full type safety:
+DropID is written in TypeScript and provides full type safety:
 
 ```typescript
-import { dropid, configure, createPrefixedId, DropIdOptions } from 'drop-api-id';
+import { dropid, configure, createPrefixedId, DropIdOptions } from 'dropaphi';
 
 // All functions are fully typed
 const id: string = dropid('user');
@@ -363,7 +365,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT © [Your Name]
+MIT © Gold Dick
 
 ## Acknowledgments
 

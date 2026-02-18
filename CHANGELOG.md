@@ -27,5 +27,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default 12-character length provides ~200 years to 1% collision at 1,000 IDs/sec
 - No sequential enumeration - prevents ID guessing attacks
 
-[Unreleased]: https://github.com/yourusername/drop-api-id/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/yourusername/drop-api-id/releases/tag/v1.0.0
+[Unreleased]: https://github.com/golddick/dropid/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/golddick/dropid/releases/tag/v1.0.0

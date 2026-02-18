@@ -1,5 +1,5 @@
 {
-  "name": "drop-api-id",
+  "name": "dropid",
   "version": "1.0.0",
   "description": "Human-readable, prefixed unique identifiers for database models",
   "main": "dist/index.js",
@@ -45,16 +45,16 @@
     "multi-tenant",
     "stripe-style-ids"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Gold Dick <goldick60@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/drop-api-id.git"
+    "url": "git+https://github.com/golddick/dropid.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/drop-api-id/issues"
+    "url": "https://github.com/golddick/dropid/issues"
   },
-  "homepage": "https://github.com/yourusername/drop-api-id#readme",
+  "homepage": "https://github.com/golddick/dropid#readme",
   "dependencies": {
     "nanoid": "^5.0.7"
   },
